@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
-    
-    // Update is called once per frame
-    void Update()
+
+    private void Start()
     {
-        print("test .Update");
-    }
-    private void LateUpdate()
-    {
-        print("test .LateUpdate");
+        GameObject myExampleGO = new GameObject("myExampleGO", typeof(AudioSource));
     }
 }
