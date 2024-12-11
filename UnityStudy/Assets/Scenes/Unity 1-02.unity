@@ -598,6 +598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2052908167}
   - component: {fileID: 2052908166}
+  - component: {fileID: 2052908168}
   m_Layer: 0
   m_Name: Hole 3
   m_TagString: Untagged
@@ -670,3 +671,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2052908168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052908165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf8e8f3f743fa64bbe928c4ac9077ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image:
+  - {fileID: 21300000, guid: 7bcac71574884da419aec326d3f09eb5, type: 3}
+  - {fileID: 21300000, guid: e467ed1a8fc85f14298f6b64eabd3036, type: 3}
+  - {fileID: 21300000, guid: 858df9e12aaa7894795bbe28f2edcaff, type: 3}
+  - {fileID: 21300000, guid: 7e577602f5772d647b87410529a78f75, type: 3}
+  - {fileID: 21300000, guid: fb53255be8493364b8ca177781794d8a, type: 3}
+  - {fileID: 21300000, guid: e469a7c91d64d564dba01cb0632c6e31, type: 3}
+  - {fileID: 21300000, guid: b62c63a6e96fc8b44b011e814b1875bb, type: 3}
+  - {fileID: 21300000, guid: 18ed8572bd9ffe845bbc76863ea253c1, type: 3}
+  - {fileID: 21300000, guid: c9d70355481952a42bb39fc0e57665e0, type: 3}
+  - {fileID: 21300000, guid: 8019d7444121f714aa3d25163d755856, type: 3}
+  - {fileID: 21300000, guid: c2411681c7709624eb2265e4a5ebe0f4, type: 3}
+  - {fileID: 21300000, guid: f66e7194d4f1ad4498743c1690ee4952, type: 3}
+  - {fileID: 21300000, guid: 784007c9b1ffb4744b9d618efd072e7f, type: 3}
+  - {fileID: 21300000, guid: 0f8a2a70b6a89954e805ad4b7f162a98, type: 3}
+  - {fileID: 21300000, guid: 692f06b1564ee7047959a850d68e474f, type: 3}
+  - {fileID: 21300000, guid: ce2fc93cddb4f784cba77dbf6c060be2, type: 3}
