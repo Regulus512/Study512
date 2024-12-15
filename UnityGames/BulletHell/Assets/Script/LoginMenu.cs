@@ -1,77 +1,75 @@
-//using System.Collections;
-//using System.Collections.Generic;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-//using GooglePlayGames;
-//using GooglePlayGames.BasicApi;
-//using UnityEngine.UI;
-//using UnityEditor;
-//using UnityEngine.SocialPlatforms;
-//using UnityEngine.SceneManagement;
-//using PlayFab;
-//using PlayFab.ClientModels;
+using GooglePlayGames;
+using GooglePlayGames.BasicApi;
+using UnityEngine.UI;
+using UnityEditor;
+using UnityEngine.SocialPlatforms;
+using UnityEngine.SceneManagement;
+using PlayFab;
+using PlayFab.ClientModels;
 //using PlayFab.ServerModels;
-//using System;
+using System;
 
 
 
 public class LoginMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
 
-    //public static string User_ID = null;
+    public static string User_ID = null;
+    public Text loginText = null;
+    void Start()
+    {
 
-    //void Start()
-    //{
+        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
+            .AddOauthScope("profile")
+            .RequestServerAuthCode(false)
+            .Build();
+        PlayGamesPlatform.InitializeInstance(config);
+        PlayGamesPlatform.Activate();
 
-    //    PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
-    //        .AddOauthScope("profile")
-    //        .RequestServerAuthCode(false)
-    //        .Build();
-    //    PlayGamesPlatform.InitializeInstance(config);
-    //    PlayGamesPlatform.Activate();
+    }
 
-    //}
+    public void OnClickLogin()
+    {
 
-    //// Update is called once per frame
-    //void Update()
-    //{
+        Social.localUser.Authenticate((bool success) =>
+        {
 
-    //}
-    //public void OnClickLogin()
-    //{
+            if (success)
+            {
+                var serverAuthCode = PlayGamesPlatform.Instance.GetServerAuthCode();
+                Debug.Log("Server Auth Code: " + serverAuthCode);
 
-    //    Social.localUser.Authenticate((bool success) => {
+                PlayFabClientAPI.LoginWithGoogleAccount(new LoginWithGoogleAccountRequest()
+                {
+                    TitleId = PlayFabSettings.TitleId,
+                    ServerAuthCode = serverAuthCode,
+                    CreateAccount = true
+                }, (result) =>
+                {
+                    User_ID = result.PlayFabId;
+                    loginText.text = "Login Success";
+                    //SceneManager.LoadScene("LobbyScene");
 
-    //        if (success)
-    //        {
-    //            var serverAuthCode = PlayGamesPlatform.Instance.GetServerAuthCode();
-    //            Debug.Log("Server Auth Code: " + serverAuthCode);
+                }, (error) =>
+                {
+                    Debug.Log(error);
+                    loginText.text = error.ErrorMessage;
+                    return;
+                }
+                );
+            }
+            else
+            {
+                loginText.text = "Login Failed!";
+                Debug.Log("Login Failed!");
+            }
 
-    //            PlayFabClientAPI.LoginWithGoogleAccount(new LoginWithGoogleAccountRequest()
-    //            {
-    //                TitleId = PlayFabSettings.TitleId,
-    //                ServerAuthCode = serverAuthCode,
-    //                CreateAccount = true
-    //            }, (result) =>
-    //            {
-    //                User_ID = result.PlayFabId;
-    //                SceneManager.LoadScene("LobbyScene");
+        });
 
-    //            }, (error) =>
-    //            {
-    //                Debug.Log(error);
-    //                return;
-    //            }
-    //            );
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("Login Failed!");
-    //        }
-
-    //    });
-
-    //}
+    }
 
 
 
