@@ -1,21 +1,27 @@
 #include <stdio.h>
 
+
 int main()
 {
 	int a, b, c, d, e;
 	scanf_s("%d %d %d %d %d", &a, &b, &c, &d, &e);
-	int res = 1;
-
-	for (int i = 1; i < 50; i++)
+	
+	if(a<1||b<1||c<1||d<1||e<1||
+		a>100||b>100||c>100||d>100||e>100)
 	{
-		int count = 0;
-		count =
-			(a%i==0)+(b%i==0)+(c%i==0)+(d%i==0)+(e%i==0);
-		if(count>=3) res *= i;
-		printf("[%d] count: %d, res: %d\n", i, count, res);
-		count = (res%a==0)+(res%b==0)+(res%c==0)+(res%d==0)+(res%e==0);
-		
-		if (count >= 3) break;
-		
+		printf("(error) input can be 1~100");
+		return;
 	}
+
+	for (int i = 1; 1; i++)
+	{
+		int count = (i%a==0) + (i%b==0) + (i%c==0) + (i%d==0) + (i%e== 0);
+		//printf("%d] %d\n",i, count);
+		if (count >= 3)
+		{
+			printf("%d", i);
+			break;
+		}
+	}
+	
 }
