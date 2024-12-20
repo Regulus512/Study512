@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("[GM] GameStart");
     }
 
-    
+    public PFGoogleSignInUnity google;
 
     // 게임 오버(인게임)
     // 플레이어 or 보스 체력 0
@@ -70,8 +70,10 @@ public class GameManager : MonoBehaviour
         scoreController.SetTimer(false);
         scoreController.ShowResult();
         gameState = GAMESTATE.GAMEOVER;
-        
         Debug.Log("[GM] GameOver");
+        google.SubmitScore(scoreController.GetScore());
+        google.RequestLeaderboard();
+        
     }
 
     public void GameClear()
@@ -90,6 +92,8 @@ public class GameManager : MonoBehaviour
         bossController.GameOver();
         inputController.GameOver();
         Debug.Log("[GM] GameClear");
+        google.SubmitScore(scoreController.GetScore());
+        google.RequestLeaderboard();
     }
 
     // 게임 재시작 버튼 클릭(게임오버)

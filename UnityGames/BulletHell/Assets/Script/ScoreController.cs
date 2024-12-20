@@ -14,6 +14,8 @@ public class ScoreController : MonoBehaviour
     TextMeshProUGUI timer_over, timer_clear;
     float curTimer = 0;
 
+    public int GetScore() { return curScore; }
+
     public void AddScore(int _input)
     {
         curScore += _input;
