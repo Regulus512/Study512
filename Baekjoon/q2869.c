@@ -3,13 +3,20 @@
 int main() {
     int a, b, v; scanf_s("%d %d %d", &a, &b, &v);
 
+    //int a = 100, b = 99, v = 1000000000;
+
     if (a == v) printf("1");
-    else if (v % (a - b) == 0)
-    {
-        printf("%d", (v - b) / (a - b) + 1);
-    }
     else
     {
-        printf("%d", v / (a - b) + 1);
+        int res = 0;
+        for (int i = 1; res < v; i++, res += a-b)
+        {
+            //printf("%d] %d\n", i, res);
+            if (res + a >= v)
+            {
+                printf("%d", i);
+                    break;
+            }
+        }
     }
 }
