@@ -2,21 +2,10 @@
 
 int main() {
     int a, b, v; scanf_s("%d %d %d", &a, &b, &v);
-
-    //int a = 100, b = 99, v = 1000000000;
-
-    if (a == v) printf("1");
+    if (v - a == 0) printf("1");
+    else if ((v - a) % (a - b) != 0) printf("%d", (v - a) / (a - b) + 2);
     else
     {
-        int res = 0;
-        for (int i = 1; res < v; i++, res += a-b)
-        {
-            //printf("%d] %d\n", i, res);
-            if (res + a >= v)
-            {
-                printf("%d", i);
-                    break;
-            }
-        }
+        printf("%d", (v - a) / (a - b) + 1);
     }
 }
