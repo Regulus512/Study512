@@ -12,8 +12,34 @@ public class PFGoogleSignInUnity : MonoBehaviour
     public Text loginUIText;
     void Start()
     {
-        PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+        if(Application.platform==RuntimePlatform.Android)
+        {
+            PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+            Debug.Log("android start");
+        }
+        else
+        {
+            //custom playfab login
+            var request = new LoginWithCustomIDRequest
+            {
+                CustomId = SystemInfo.deviceUniqueIdentifier,
+                CreateAccount = true
+            };
+            PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
+        }
+
     }
+
+    void OnSuccess(LoginResult result)
+    {
+        print("Successful login/account create");
+    }
+    void OnError(PlayFabError error)
+    {
+        print("Error creating acount"); ;
+        print(error.GenerateErrorReport());
+    }
+
 
     internal void ProcessAuthentication(SignInStatus status)
     {
@@ -54,14 +80,19 @@ public class PFGoogleSignInUnity : MonoBehaviour
 
 
     //리더보드
-    public void SubmitScore(int playerScore)
+    public void SubmitScore(int playerScore, int playerTime)
     {
         PlayFabClientAPI.UpdatePlayerStatistics(new UpdatePlayerStatisticsRequest
         {
             Statistics = new List<StatisticUpdate> {
             new StatisticUpdate {
-                StatisticName = "HighScore",
+                StatisticName = "Score",
                 Value = playerScore
+            },
+            new StatisticUpdate
+            {
+                StatisticName = "Time",
+                Value = playerTime
             }
         }
         }, result => OnStatisticsUpdated(result), FailureCallback);
@@ -87,7 +118,14 @@ public class PFGoogleSignInUnity : MonoBehaviour
     {
         PlayFabClientAPI.GetLeaderboard(new GetLeaderboardRequest
         {
-            StatisticName = "HighScore",
+            StatisticName = "Score",
+            StartPosition = 0,
+            MaxResultsCount = 3
+        }, result => DisplayLeaderboard(result), FailureCallback);
+
+        PlayFabClientAPI.GetLeaderboard(new GetLeaderboardRequest
+        {
+            StatisticName = "Time",
             StartPosition = 0,
             MaxResultsCount = 3
         }, result => DisplayLeaderboard(result), FailureCallback);
@@ -97,13 +135,9 @@ public class PFGoogleSignInUnity : MonoBehaviour
     {
         foreach(var res in result.Leaderboard)
         {
-            leaderBoardTest.text +=
-                $"DisplayName: {res.DisplayName}, PlafabID: {res.PlayFabId}" +
-                $"StatValue: {res.StatValue}, Position {res.Position}\n";
+            print($"DisplayName: {res.DisplayName}, PlafabID: {res.PlayFabId}" +
+                $"StatValue: {res.StatValue}, Position {res.Position}\n");
         }
-        
-
-
     }
 
 }

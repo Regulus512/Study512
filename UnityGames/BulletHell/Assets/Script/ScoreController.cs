@@ -13,6 +13,7 @@ public class ScoreController : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI timer_over, timer_clear;
     float curTimer = 0;
+    public int GetTimer() { return (int)curTimer; }
 
     public int GetScore() { return curScore; }
 

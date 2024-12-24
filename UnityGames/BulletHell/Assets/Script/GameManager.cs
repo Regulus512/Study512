@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         scoreController.ShowResult();
         gameState = GAMESTATE.GAMEOVER;
         Debug.Log("[GM] GameOver");
-        google.SubmitScore(scoreController.GetScore());
+        google.SubmitScore(scoreController.GetScore(), scoreController.GetTimer());
         google.RequestLeaderboard();
         
     }
@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
         bossController.GameOver();
         inputController.GameOver();
         Debug.Log("[GM] GameClear");
-        google.SubmitScore(scoreController.GetScore());
+        google.SubmitScore(scoreController.GetScore(), scoreController.GetTimer());
         google.RequestLeaderboard();
     }
 
