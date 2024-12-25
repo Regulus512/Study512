@@ -72,7 +72,6 @@ public class GameManager : MonoBehaviour
         gameState = GAMESTATE.GAMEOVER;
         Debug.Log("[GM] GameOver");
         google.SubmitScore(scoreController.GetScore(), scoreController.GetTimer());
-        google.RequestLeaderboard();
         
     }
 
@@ -93,7 +92,6 @@ public class GameManager : MonoBehaviour
         inputController.GameOver();
         Debug.Log("[GM] GameClear");
         google.SubmitScore(scoreController.GetScore(), scoreController.GetTimer());
-        google.RequestLeaderboard();
     }
 
     // 게임 재시작 버튼 클릭(게임오버)

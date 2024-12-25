@@ -103,41 +103,17 @@ public class PFGoogleSignInUnity : MonoBehaviour
         Debug.Log("Successfully submitted high score");
     }
 
+    //public Text leaderBoardTest;
     private void FailureCallback(PlayFabError error)
     {
         Debug.LogWarning("Something went wrong with your API call. Here's some debug information:");
         Debug.LogError(error.GenerateErrorReport());
 
-        leaderBoardTest.text = error.GenerateErrorReport();
+        //leaderBoardTest.text = error.GenerateErrorReport();
     }
 
-    public Text leaderBoardTest;
+    
 
-    //Get the players with the top 10 high scores in the game
-    public void RequestLeaderboard()
-    {
-        PlayFabClientAPI.GetLeaderboard(new GetLeaderboardRequest
-        {
-            StatisticName = "Score",
-            StartPosition = 0,
-            MaxResultsCount = 3
-        }, result => DisplayLeaderboard(result), FailureCallback);
-
-        PlayFabClientAPI.GetLeaderboard(new GetLeaderboardRequest
-        {
-            StatisticName = "Time",
-            StartPosition = 0,
-            MaxResultsCount = 3
-        }, result => DisplayLeaderboard(result), FailureCallback);
-    }
-
-    public void DisplayLeaderboard(GetLeaderboardResult result)
-    {
-        foreach(var res in result.Leaderboard)
-        {
-            print($"DisplayName: {res.DisplayName}, PlafabID: {res.PlayFabId}" +
-                $"StatValue: {res.StatValue}, Position {res.Position}\n");
-        }
-    }
+    
 
 }
