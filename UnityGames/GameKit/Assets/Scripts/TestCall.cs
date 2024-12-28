@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
+// GameMng를 통해 Mng1의 인스턴스를 참조할 클래스
 public class TestCall : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
+        GameMng.GetInstance().GetMng<Mng1>().CallMng();
+        if (SceneManager.GetActiveScene().name =="Title")
+            SceneManager.LoadScene("Lobby");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
