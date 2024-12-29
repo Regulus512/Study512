@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Test Class (일반화 함수를 호출할 클래스)
 public class GameMng : MonoBehaviour
 {
     private static GameMng instance;
     public static GameMng GetInstance() { return (instance == null) ? null : instance; }
-    public GameObject[] MngObjs;
+    public List<GameObject> MngObjs = new List<GameObject>();
 
     private void Awake()
     {
@@ -24,11 +25,28 @@ public class GameMng : MonoBehaviour
         }
         
     }
+    
+    public void GameStart()
+    {
+        SceneManager.LoadScene("Lobby");
+    }
+
+    public void GamePause()
+    {
+        print("GamePause()");
+    }
+
+    public void GameResult()
+    {
+        SceneManager.LoadScene("GameResult");
+    }
+    
 
     public T GetMng<T>()
     {
         foreach(var Mng in MngObjs)
         {
+            if (Mng == null) continue;
             var mngComponent = Mng.GetComponent<T>();
             if (mngComponent != null)
                 return mngComponent;

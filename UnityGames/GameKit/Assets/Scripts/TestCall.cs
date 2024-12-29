@@ -8,7 +8,7 @@ public class TestCall : MonoBehaviour
 {
     void Start()
     {
-        GameMng.GetInstance().GetMng<Mng1>().CallMng();
+        //GameMng.GetInstance().GetMng<Mng1>().CallMng();
         if (SceneManager.GetActiveScene().name =="Title")
             SceneManager.LoadScene("Lobby");
     }
