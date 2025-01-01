@@ -33,7 +33,7 @@ public class GameMng : MonoBehaviour
 
     public void GamePause()
     {
-        print("GamePause()");
+        print($"{GetType()}:GamePause()");
     }
 
     public void GameResult()
