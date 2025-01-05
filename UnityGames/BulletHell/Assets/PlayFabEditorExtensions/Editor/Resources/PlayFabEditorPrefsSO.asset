@@ -15,7 +15,7 @@ MonoBehaviour:
   DevAccountEmail: minji010402@gmail.com
   DevAccountToken: pkop543raetm6hn71ifka8fwm1kat9yjgabcggkydm1x67tcmxer744qame7f4knduepqu3hahewirpx33juc94zymhd68y3cyyh9xup7k9q1cz5xndwf7rw946rmgqn6g3rwrt4zg7eotdgy9hzqc5rw4x6t74a1eyxgyzdexsyhwsdth85dkqqitodo3oah8ex6nnc
   AadAuthorization: 
-  SelectedStudio: 
+  SelectedStudio: Test
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
   LocalCloudScriptPath: 

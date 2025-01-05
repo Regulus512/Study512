@@ -27,7 +27,6 @@ public class PFGoogleSignInUnity : MonoBehaviour
             };
             PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
         }
-
     }
 
     void OnSuccess(LoginResult result)
@@ -112,8 +111,5 @@ public class PFGoogleSignInUnity : MonoBehaviour
         //leaderBoardTest.text = error.GenerateErrorReport();
     }
 
-    
-
-    
 
 }

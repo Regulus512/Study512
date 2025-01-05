@@ -104,5 +104,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    public void Shop()
+    {
+        SceneManager.LoadScene(1);
+    }
 
 }
