@@ -70,3 +70,5 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+UnityGames/BulletHell/Assets/PlayFabEditorExtensions/Editor/Resources/PlayFabEditorPrefsSO.asset
+UnityGames/BulletHell/Assets/PlayFabSDK/Shared/Public/Resources/PlayFabSharedSettings.asset
