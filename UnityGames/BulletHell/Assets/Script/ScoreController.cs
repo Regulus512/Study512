@@ -2,9 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using PlayFab;
+using PlayFab.ClientModels;
 
 public class ScoreController : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI currencyUI;
+    int currency = 0;
+    public void AddMoney()
+    {
+        var request = new AddUserVirtualCurrencyRequest() { VirtualCurrency = "KW", Amount = 50 };
+        PlayFabClientAPI.AddUserVirtualCurrency(request, (result) =>
+        {
+            //currency controller를 따로 둔다
+            //0원을 넣으면 돈을 안넣고도 result를 불러올 수 있다
+            currency = result.Balance;
+            print("돈 얻기 성공! 현재 돈 : " + result.Balance);
+            
+            currencyUI.text = result.Balance.ToString();
+        }, (error) => print(error.GenerateErrorReport()));
+    }
+
     [SerializeField] DataController dataController;
     [SerializeField]
     TextMeshProUGUI score_over, score_clear;
