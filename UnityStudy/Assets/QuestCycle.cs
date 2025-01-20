@@ -6,18 +6,18 @@ using UnityEngine;
 
 public class QuestCycle : MonoBehaviour
 {
-    private int local = 0;
+    private int index = 0;
 
     private void Update()
     {
-        local++;
-        Global.global++;
-        print(string.Format("Update. Local: {0}, Global: {1}", local, Global.global));
+        index += 1;
+        Constant.index += 1;
+        print(string.Format("Update. Local: {0}, Global: {1}", index, Constant.index));
     }
     private void LateUpdate()
     {
-        local--;
-        Global.global--;
-        print(string.Format("Update. Local: {0}, Global: {1}", local, Global.global));
+        index -= 1;
+        Constant.index -= 1;
+        print(string.Format("LateUpdate. Local: {0}, Global: {1}", index, Constant.index));
     }
 }
