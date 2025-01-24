@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class MngScene : MonoBehaviour
 {
-    private Sprite[] anim = null;
-    private int animID = 0;
+    private Sprite[] images = null;
+    private int imgi = 0;
 
-    public Sprite[] animTypeA = null;
-    public Sprite[] animTypeB = null;
-    public Sprite[] animTypeC = null;
-    public Sprite[] animTypeD = null;
+    public Sprite[] imgTypeA = null;
+    public Sprite[] imgTypeB = null;
+    public Sprite[] imgTypeC = null;
+    public Sprite[] imgTypeD = null;
 
 
     SpriteRenderer[] holeRenders = null;
-    private int holeID = 0;
+    private int ri = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -24,25 +24,25 @@ public class MngScene : MonoBehaviour
         {
             holeRenders[i] = GameObject.Find($"Hole {i+1}").GetComponent<SpriteRenderer>();
         }
-        anim = animTypeA;
+        images = imgTypeA;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        holeRenders[holeID].sprite = anim[animID];
-        animID = (animID + 1) % anim.Length;
-        if (animID == 0)
+        holeRenders[ri].sprite = images[imgi];
+        imgi = (imgi + 1) % images.Length;
+        if (imgi == 0)
         {
             // next hole
-            holeID = (holeID + 1) % holeRenders.Length;
+            ri = (ri + 1) % holeRenders.Length;
 
 
-            // next animation type
-            if      (anim == animTypeA) anim = animTypeB;
-            else if (anim == animTypeB) anim = animTypeC;
-            else if (anim == animTypeC) anim = animTypeD;
-            else if (anim == animTypeD) anim = animTypeA;
+            // next imagesation type
+            if      (images == imgTypeA) images = imgTypeB;
+            else if (images == imgTypeB) images = imgTypeC;
+            else if (images == imgTypeC) images = imgTypeD;
+            else if (images == imgTypeD) images = imgTypeA;
         }
     }
 }
