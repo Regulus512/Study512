@@ -10,15 +10,15 @@ int count(int n)
 	int cnt = 0;
 	for(int i=1; i<=n; i++)
 	{
-		if      (i%100==0) {cnt+=2; v100+=1;}
-		else if (i%10==0)  {cnt+=1; v10+=1;}
+		if      (i%100==0) { cnt+=2; v100+=1; }
+		else if (i%10==0)  { cnt+=1; v10+=1; }
 		else if (i%5==0)   {
-			/*while(i)
+			int v = i;
+			while(v%5==0)
 			{
-				printf("%d", i);
-				cnt+=1; i/=5;
+				cnt+=1; v/=5;
 				v5+=1;
-			}*/
+			}
 		}
 	}
 	return cnt;
@@ -28,7 +28,8 @@ int main()
 {
 	for(int i = 0; i <= 500; i++)
 	{
-		printf("%d) (v100)%d+(v10)%d+(v5)%d = %d\n",i, v100, v10, v5, count(i));
+		printf("%d)\n (100:%d 10:%d 5:%d)\n = %d\n",i, v100, v10, v5, count(i));
 	}
-	
+	/*int n; scanf_s("%d", &n);
+	printf("%d", count(n));*/
 }
