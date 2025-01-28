@@ -5,12 +5,12 @@ using UnityEngine;
 public class MngGame : MonoBehaviour
 {
     public Hole firstHole;
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
     void Start()
     {
         firstHole.PlayAnimation();
-    }
-    private void Update()
-    {
-        print("main routine");
     }
 }
