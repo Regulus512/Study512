@@ -30,14 +30,45 @@ int Count(long long v)
 	return cnt;
 }
 
+int L(int s, int e, int n)
+{
+	int cnt = 0;
+	for(int i=s; i<=e; i++)
+	{
+		//printf("%d", i);
+		if (n > 1)
+			cnt += L(i + 1, e, n - 1);
+		else
+			cnt++;
+
+	}
+	//printf("\n");
+	return cnt;
+}
+
+
 int main()
 {
-	int n = 25;
-	for(int i = 1; i<=n; i++)
-	{
-		long long res = nCr(n, i);
+	int n = 10, r = 3;
+	printf("%dC%d=%lld\n", n, r, nCr(n, r));
 
-		printf("'s cnt: %d\n\n", Count(res));
+	printf("%d", L(1, n, r));
+	/*
+	int cnt = 0;
+
+	int n = 5;
+	for(int i=1; i<=n; i++)
+	{
+		printf("%d", i);
+		for(int j=i+1; j<=n; j++)
+		{
+			
+			printf("%d", j);
+			cnt++;
+
+		}
+		printf("\n");
 	}
-		
+	printf("%d", cnt);*/
+	
 }
