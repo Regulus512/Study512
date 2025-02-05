@@ -5,63 +5,58 @@ int nCr(int n, int r)
 	int y = (n - r < r) ? n-r : r;
 
 	int v2 = 0, v5 = 0;
-	for (int i = n; i > x; i--)
+	for(int i=5; i<=n;i+=5)
 	{
-		printf("%d ", i);
-		int v = i;
-		while(v%2==0)
-		{
-			v /= 2;
-			v2++;
-		}
-		while(v%5==0)
-		{
-			v /= 5;
-			v5++;
-		}
-	}
-	printf("\n");
-	for (int i = y; i > 0; i--)
-	{
-		printf("%d ", i);
-		int v = i;
-		while(v%2==0)
-		{
-			v /= 2;
-			v2--;
-		}
-		while(v%5==0)
-		{
-			v /= 5;
-			v5--;
-		}
-	}
-	printf("\n");
-	printf("v2)%d v5) %d\n", v2, v5);
-	
-	return (v2<v5)? v2 : v5;
-}
+		if (i < x) continue;
 
-int Count(long long v)
-{
-	int cnt=0;
-	while(v%10==0)
-	{
-		v /= 10; cnt++;
+		printf("%d, ", i);
+		int v = i;
+		while(v%5==0)
+		{
+			v5++; v /= 5;
+		}
 	}
-	return cnt;
+	printf(" / ");
+	for(int i=5; i<= y; i+=5)
+	{
+		printf("%d, ", i);
+		int v = i;
+			while(v%5==0)
+			{
+				v5--; v /= 5;
+			}
+	}
+	printf("\n");
+	printf("%d\n", v5);
+	
+	x = (x % 2 == 0) ? x : x + 1;
+	for(int i=x; i<=n; i+=2)
+	{
+		printf("%d, ", i);
+		int v = i;
+		while(v%2==0)
+		{
+			v2++;
+			v /= 2;
+		}
+	}
+	printf(" / ");
+	for(int i=2; i<=y; i+=2)
+	{
+		printf("%d, ", i);
+		int v = i;
+		while(v%2==0)
+		{
+			v2--;
+			v /= 2;
+		}
+	}
+	printf("\n");
+	printf("%d", v2);
+	return (v2<v5)? v2 : v5;
 }
 
 int main()
 {
-	printf("%d", nCr(100, 98));
-
-	//int n = 25;
-	/*for(int i = 1; i<=n; i++)
-	{
-		long long res = nCr(n, i);
-
-		printf("'s cnt: %d\n\n", Count(res));
-	}*/
-		
+	nCr(25, 12);
 }
