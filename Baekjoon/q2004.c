@@ -7,15 +7,17 @@ int nCr(int n, int r)
 	int v2 = 0, v5 = 0;
 	for(int i=5; i<=n;i+=5)
 	{
-		if (i < x) continue;
-
 		printf("%d, ", i);
+		if (i <= x) continue;
+
 		int v = i;
 		while(v%5==0)
 		{
 			v5++; v /= 5;
 		}
+		
 	}
+	//printf("[v5: %d]\n", v5);
 	printf(" / ");
 	for(int i=5; i<= y; i+=5)
 	{
@@ -27,36 +29,39 @@ int nCr(int n, int r)
 			}
 	}
 	printf("\n");
-	printf("%d\n", v5);
 	
 	x = (x % 2 == 0) ? x : x + 1;
-	for(int i=x; i<=n; i+=2)
+	for(int i=n; i>x; i-=2)
 	{
-		printf("%d, ", i);
+		int cnt = 0;
 		int v = i;
 		while(v%2==0)
 		{
-			v2++;
+			v2++; cnt++;
 			v /= 2;
 		}
+		printf("%d ", cnt);
 	}
+	printf("\n");
+	printf("[v2: %d]", v2);
 	printf(" / ");
 	for(int i=2; i<=y; i+=2)
 	{
-		printf("%d, ", i);
+		int cnt = 0;
 		int v = i;
 		while(v%2==0)
 		{
-			v2--;
+			v2--; cnt++;
 			v /= 2;
 		}
+		printf("%d ", cnt);
 	}
 	printf("\n");
-	printf("%d", v2);
+	printf("[v2: %d]", v2);
 	return (v2<v5)? v2 : v5;
 }
 
 int main()
 {
-	nCr(25, 12);
+	nCr(100, 50);
 }
