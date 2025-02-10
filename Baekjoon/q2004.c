@@ -19,7 +19,7 @@ int main()
 {
 	
 	int v2 = 0, v5 = 0;
-	int n = 2000000000, r = 100000000;
+	int n = 25, r = 12;
 	
 	v2 = div(n, 2) - div(r, 2) - div(n - r, 2);
 	v5 = div(n, 5) - div(r, 5) - div(n - r, 5);
