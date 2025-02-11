@@ -27,7 +27,7 @@ int count(int n, int cnt)
 
 
 int main() {
-    long long n=2, cnt=3;
+    long long n=3, cnt=99999;
     long long res = 0;
 
     switch (n)
@@ -39,7 +39,7 @@ int main() {
         case 2:
         case 3:
         case 4:
-            res = (cnt % 2 == 0) ? 4 * cnt + (n - 1) : 4 * cnt + (10 - n) - 1;
+            res = (cnt % 2 == 0) ? 4 * cnt + (n - 1) : 4 * cnt + (5 - n);
             break;
     }
     printf("switch: %lld\n", res);
