@@ -11,6 +11,6 @@ public class MngGame : MonoBehaviour
     }
     void Start()
     {
-        firstHole.PlayAnimation();
+        StartCoroutine(firstHole.animation());
     }
 }
