@@ -2,43 +2,37 @@
 
 int isPrime(int n)
 {
-	for (int i = 2; i < n; i++)
+	for(int i = 2; i<n; i++)
 	{
 		if (n % i == 0) return 0;
 	}
 	return 1;
 }
 
-int some(int n)
+int Primes(int n)
 {
-	for (int v = 2; v < n; v++)
+	for(int i = 2; i<n; i++)
 	{
-		if (!isPrime(v)) continue;
-		//printf("%d\n", v);
-		int s = n / v, e = 2 * n / v;
-		for (int i = s; i <= e; i++)
+		if (isPrime(i))
 		{
-			//printf("%d ", i * v);
-			if (i * v == n) return 0;
+			if(n%i == 0)
+			{
+				//printf("%d is divide by %d\n", n, i);
+				return 0;
+			}
 		}
-		//printf("\n");
 	}
 	return 1;
 }
 
 int main()
 {
-	int n=10; //scanf_s("%d", &n);
-	//printf("%d\n", some(n));
+	int n = 100;
 	int cnt = 0;
-	
-	for (int i = n + 1; i <= 2 * n; i++)
+	for(int i = n+1; i<=2*n; i++)
 	{
-		if (some(i))
-		{
-			cnt++;
-			//printf("%d\n", i);
-		}
+		cnt += Primes(i);
 	}
 	printf("%d\n", cnt);
+	
 }
