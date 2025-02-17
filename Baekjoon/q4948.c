@@ -1,38 +1,30 @@
 #include <stdio.h>
 
-int isPrime(int n)
-{
-	for(int i = 2; i<n; i++)
-	{
-		if (n % i == 0) return 0;
-	}
-	return 1;
-}
-
-int Primes(int n)
-{
-	for(int i = 2; i<n; i++)
-	{
-		if (isPrime(i))
-		{
-			if(n%i == 0)
-			{
-				//printf("%d is divide by %d\n", n, i);
-				return 0;
-			}
-		}
-	}
-	return 1;
-}
+int loop = 0;
 
 int main()
 {
-	int n = 100;
+	int n=1;
 	int cnt = 0;
-	for(int i = n+1; i<=2*n; i++)
+	int p = 2;
+	for (; p * p <= 2*n; p++, loop++);
+	printf("%d\n", p);
+	for(int i=n+1; i<=2*n; i++)
 	{
-		cnt += Primes(i);
+		int res = 1;
+		
+		for(int j=2; j<p; j++)
+		{
+			if (i % j == 0)
+			{
+				loop++;
+				printf("%d is not prime\n", i);
+				res = 0;
+				break;
+			}
+		}
+		cnt += res;
 	}
-	printf("%d\n", cnt);
-	
+	printf("cnt: %d\n", cnt);
+	printf("loop: %d\n", loop);
 }
