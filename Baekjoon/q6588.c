@@ -21,26 +21,39 @@ int main()
 {
     
     //for(int i = 0; i<100000; i++)
-    for(int n=6; n<=100; n+=2)
+    for(int n=6; n<=10; n+=2)
     {
+        printf("[%d] ", n);
         //int n=100000;
+        int p = 3, res = 0;
         int a = 0, b = 0;
+        for(; p*p<n; p+=2);
         for(int i = 3; i <= n-3; i+=2)
         {
-            a = isOddPrime(i); b = isOddPrime(n - i);
-            if (0 < a && 0 < b)
-            {
-                break;
-            }
-        }
-        if (0 < a && 0 < b)
-            printf("%d = %d + %d\n", n, a, b);
-        else
-        {
-            printf("Goldbach's conjecture is wrong.\n");
-            break;
-        }
             
+            for(int j=3; j<=p; j+=2)
+            {
+                if (i % j != 0)
+                {
+                    a = i;
+                    printf("a = %d\n", a);
+                }
+                if((n-i)%j !=0)
+                {
+                    b = n - i;
+                    printf("b = %d\n", b);
+                }
+            }
+
+
+            /*
+            if(res==0)
+            {
+                printf("Goldbach's conjecture is wrong.\n");
+            }
+            */
+        }
+        printf("\n");
     }
     
 }
