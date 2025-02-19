@@ -1,12 +1,11 @@
 #include <stdio.h>
 
-int isOddPrime(int n)
+int isOddPrime(int n, int p)
 {
     if (n == 3) return n;
-    int p = 3;
-    for(; p*p<n; p+=2);
+    
     //printf("p: %d\n", p);
-    for(int i=3; i<=p; i+=2)
+    for(int i=3; i<n && i<p; i+=2)
     {
         if (n % i == 0)
         {
@@ -21,13 +20,20 @@ int main()
 {
     
     //for(int i = 0; i<100000; i++)
-    for(int n=6; n<=100; n+=2)
+    //for(int n=6; n<=10; n+=2)
     {
-        //int n=100000;
-        int a = 0, b = 0;
+        int n=100000;
+        int a = 0, b = 0, p = 3;
+        for(; p*p<=n; p+=2);
+        printf("p: %d\n", p);
+        
         for(int i = 3; i <= n-3; i+=2)
         {
-            a = isOddPrime(i); b = isOddPrime(n - i);
+            a = isOddPrime(i, p); b = isOddPrime(n - i, p);
+            if(i<20)
+            {
+                printf("%d %d\n", a, b);
+            }
             if (0 < a && 0 < b)
             {
                 break;
@@ -37,10 +43,10 @@ int main()
             printf("%d = %d + %d\n", n, a, b);
         else
         {
-            printf("Goldbach's conjecture is wrong.\n");
-            break;
+            printf("%d's Goldbach's conjecture is wrong.\n", n);
+            //break;
         }
-            
+        
     }
     
 }
