@@ -22,24 +22,39 @@ int main()
     //for(int i = 0; i<100000; i++)
     //for(int n=6; n<=10; n+=2)
     {
-        int n=100000;
+        int n=1000000;
         int a = 0, b = 0, p = 3;
+        int res = 1;
         for(; p*p<=n; p+=2);
         printf("p: %d\n", p);
         
-        for(int i = 3; i <= n-3; i+=2)
+        for(int i = 3; i <= n-3; i+=2, res=1)
         {
-            a = isOddPrime(i, p); b = isOddPrime(n - i, p);
-            if(i<20)
+            for(int j=5; j<i&&j<p; j+=2)
             {
-                printf("%d %d\n", a, b);
+                if (i % j == 0)
+                {
+                    res = 0;
+                    break;
+                }
             }
-            if (0 < a && 0 < b)
+            for(int j = p; 3<=j; j-=2)
             {
+                if((n-i) % j == 0)
+                {
+                    res = 0;
+                    break;
+                }
+            }
+            printf("%d) %d, %d\n", res, i, n - i);
+            if (res==1)
+            {
+                a = i;
+                b = n - i;
                 break;
             }
         }
-        if (0 < a && 0 < b)
+        if (res)
             printf("%d = %d + %d\n", n, a, b);
         else
         {
