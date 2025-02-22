@@ -20,20 +20,17 @@ int main()
 {
     
     //for(int i = 0; i<100000; i++)
-    //for(int n=6; n<=10; n+=2)
+    for(int n=100; n<=150; n+=2)
     {
-        int n=100000;
+        //int n=1000000;
+        
         int a = 0, b = 0, p = 3;
         for(; p*p<=n; p+=2);
-        printf("p: %d\n", p);
+        //printf("p: %d\n", p);
         
         for(int i = 3; i <= n-3; i+=2)
         {
             a = isOddPrime(i, p); b = isOddPrime(n - i, p);
-            if(i<20)
-            {
-                printf("%d %d\n", a, b);
-            }
             if (0 < a && 0 < b)
             {
                 break;
