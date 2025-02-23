@@ -20,9 +20,9 @@ int main()
 {
     
     //for(int i = 0; i<100000; i++)
-    for(int n=100; n<=150; n+=2)
+    //for(int n=100; n<=150; n+=2)
     {
-        //int n=1000000;
+        int n=1000000;
         
         int a = 0, b = 0, p = 3;
         for(; p*p<=n; p+=2);
