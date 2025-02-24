@@ -1,4 +1,14 @@
 #include <stdio.h>
+int isPrime(int n)
+{
+    if (n % 2 == 0) return 0;
+    for (int i = 3; i < n; i += 2)
+    {
+        if (n % i == 0) return 0;
+    }
+    return 1;
+}
+
 
 int isOddPrime(int n, int p)
 {
@@ -12,6 +22,13 @@ int isOddPrime(int n, int p)
             //printf("%d is divided by %d\n", n, i);
             return 0;
         }
+        i += 2;
+        /*
+        while (isPrime(i)==0)
+        {
+            i += 2;
+        }*/
+        
     }
     return n;
 }
@@ -22,7 +39,7 @@ int main()
     //for(int i = 0; i<100000; i++)
     //for(int n=100; n<=150; n+=2)
     {
-        int n=1000000;
+        int n=100000; // a: 17+9999...
         
         int a = 0, b = 0, p = 3;
         for(; p*p<=n; p+=2);
