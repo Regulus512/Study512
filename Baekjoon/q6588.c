@@ -1,45 +1,47 @@
 #include <stdio.h>
 
-int isOddPrime(int a, int b, int p)
+
+
+int isOddPrime(int n)
 {
-    int res = 1;
+    int p=3;
+    for(;p<n; p+=2);
     
     //printf("p: %d\n", p);
     for(int i=3; i<p; i+=2)
     {
-        if (i<a && a%i==0)
-        {
-            res=0; break;
-        }
-        if (b%i==0)
-        {
-            res=0; break;
-        }
+        if(n%i==0) return 0;
     }
-    return res;
+    return 1;
 }
+
 
 int main()
 {
-    for(int c = 0; c<100000; c++)
+    while(1)
     {
-        int n = 1000000;
-        int p = 3, res = 1;
-        for(; p*p<n; p+=2);
-        for(int i = 3; i <= n-3; i+=2)
+        int a = 0, b = 0;
+        int n; scanf("%d", &n);
+        if(n==0) break;
+        for(int i=3; i<n; i+=2)
         {
-            res = isOddPrime(i, n-i, p);
-            if (res)
+            if(isOddPrime(i) && isOddPrime(n-i))
             {
+                a=i; b=n-i;
                 break;
             }
         }
-        if (res==0)
+        if(a==0)
         {
-            printf("Goldbach's conjecture is wrong.\n");
+            printf("Goldbach's conjecture is wrong.\n", n);
         }
-        
+        else
+        {
+            printf("%d = %d + %d\n", n, a, b);
+        }
     }
+    
+    
     
 }
 
