@@ -21,7 +21,7 @@ int main()
     while(1)
     {
         int a = 0, b = 0;
-        int n; scanf("%d", &n);
+        int n; scanf_s("%d", &n);
         if(n==0) break;
         for(int i=3; i<n; i+=2)
         {
@@ -33,7 +33,7 @@ int main()
         }
         if(a==0)
         {
-            printf("Goldbach's conjecture is wrong.\n", n);
+            printf("Goldbach's conjecture is wrong.\n");
         }
         else
         {
