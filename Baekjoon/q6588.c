@@ -1,31 +1,36 @@
 #include <stdio.h>
 
-
-
-int isOddPrime(int n)
+int isOddPrime(int a, int b)
 {
-    int p=3;
-    for(;p<n; p+=2);
+    int res = 1;
     
     //printf("p: %d\n", p);
-    for(int i=3; i<p; i+=2)
+    for(int i=3; i*i<=b; i+=2)
     {
-        if(n%i==0) return 0;
+        if (i<a && a%i==0)
+        {
+            res=0; break;
+        }
+        if (b%i==0)
+        {
+            res=0; break;
+        }
     }
-    return 1;
+    return res;
 }
-
 
 int main()
 {
-    while(1)
+    for(int c = 0; c<100000; c++)
+    //while(1)
     {
         int a = 0, b = 0;
-        int n; scanf_s("%d", &n);
+        int n = 1000000;
+        //int n; scanf("%d", &n);
         if(n==0) break;
         for(int i=3; i<n; i+=2)
         {
-            if(isOddPrime(i) && isOddPrime(n-i))
+            if(isOddPrime(i, n-i))
             {
                 a=i; b=n-i;
                 break;
@@ -37,11 +42,7 @@ int main()
         }
         else
         {
-            printf("%d = %d + %d\n", n, a, b);
+            //printf("%d = %d + %d\n", n, a, b);
         }
     }
-    
-    
-    
 }
-
