@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 197434277}
   - component: {fileID: 197434276}
   m_Layer: 0
-  m_Name: Mole 2
+  m_Name: Hole 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 418015922}
   - component: {fileID: 418015921}
   m_Layer: 0
-  m_Name: Mole 6
+  m_Name: Hole 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -473,6 +473,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &442563583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 442563584}
+  - component: {fileID: 442563585}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &442563584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442563583}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &442563585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442563583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91fa3d6bcdf4714eb095f18c0c0f06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &457466440
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +528,7 @@ GameObject:
   - component: {fileID: 457466442}
   - component: {fileID: 457466441}
   m_Layer: 0
-  m_Name: Mole 8
+  m_Name: Hole 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -660,7 +703,7 @@ GameObject:
   - component: {fileID: 494765303}
   - component: {fileID: 494765302}
   m_Layer: 0
-  m_Name: Mole 4
+  m_Name: Hole 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -920,7 +963,7 @@ GameObject:
   - component: {fileID: 867839339}
   - component: {fileID: 867839338}
   m_Layer: 0
-  m_Name: Mole 7
+  m_Name: Hole 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1095,7 +1138,7 @@ GameObject:
   - component: {fileID: 1457244583}
   - component: {fileID: 1457244582}
   m_Layer: 0
-  m_Name: Mole 5
+  m_Name: Hole 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1272,7 +1315,7 @@ GameObject:
   - component: {fileID: 1646630824}
   - component: {fileID: 1646630823}
   m_Layer: 0
-  m_Name: Mole 3
+  m_Name: Hole 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1447,7 +1490,7 @@ GameObject:
   - component: {fileID: 1886462336}
   - component: {fileID: 1886462335}
   m_Layer: 0
-  m_Name: Mole 1
+  m_Name: Hole 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
