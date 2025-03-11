@@ -1,60 +1,48 @@
 #include <stdio.h>
 
-int isOddPrime(int n)
+int isOddPrime(int a, int b)
 {
-    if (n == 3) return n;
-    int p = 3;
-    for(; p*p<n; p+=2);
+    int res = 1;
+    
     //printf("p: %d\n", p);
-    for(int i=3; i<=p; i+=2)
+    for(int i=3; i*i<=b; i+=2)
     {
-        if (n % i == 0)
+        if (i<a && a%i==0)
         {
-            //printf("%d is divided by %d\n", n, i);
-            return 0;
+            res=0; break;
+        }
+        if (b%i==0)
+        {
+            res=0; break;
         }
     }
-    return n;
+    return res;
 }
 
 int main()
 {
-    
-    //for(int i = 0; i<100000; i++)
-    for(int n=6; n<=10; n+=2)
+    for(int c = 0; c<100000; c++)
+    //while(1)
     {
-        printf("[%d] ", n);
-        //int n=100000;
-        int p = 3, res = 0;
         int a = 0, b = 0;
-        for(; p*p<n; p+=2);
-        for(int i = 3; i <= n-3; i+=2)
+        int n = 1000000;
+        //int n; scanf("%d", &n);
+        if(n==0) break;
+        for(int i=3; i<n; i+=2)
         {
-            
-            for(int j=3; j<=p; j+=2)
+            if(isOddPrime(i, n-i))
             {
-                if (i % j != 0)
-                {
-                    a = i;
-                    printf("a = %d\n", a);
-                }
-                if((n-i)%j !=0)
-                {
-                    b = n - i;
-                    printf("b = %d\n", b);
-                }
+                a=i; b=n-i;
+                break;
             }
-
-
-            /*
-            if(res==0)
-            {
-                printf("Goldbach's conjecture is wrong.\n");
-            }
-            */
         }
-        printf("\n");
+        if(a==0)
+        {
+            printf("Goldbach's conjecture is wrong.\n");
+        }
+        else
+        {
+            //printf("%d = %d + %d\n", n, a, b);
+        }
     }
-    
 }
-

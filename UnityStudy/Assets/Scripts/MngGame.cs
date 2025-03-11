@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class MngGame : MonoBehaviour
 {
-    public Hole firstHole;
     private void Awake()
     {
         Application.targetFrameRate = 60;
     }
     void Start()
     {
-        StartCoroutine(firstHole.animation());
+        Hole start = GameObject.Find("Hole 1").GetComponent<Hole>();
+        StartCoroutine(start.animation());
     }
 }
