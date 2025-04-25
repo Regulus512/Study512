@@ -17,6 +17,9 @@ public class Hole2 : MonoBehaviour
         for(int i=0; i<sprites.Length; i++)
         {
             render.sprite = sprites[i];
+            print($"{gameObject.name} Coroutine1");
+            print($"{gameObject.name} Coroutine2");
+            print($"{gameObject.name} Coroutine3");
             yield return null;
         }
     }
