@@ -6,8 +6,9 @@ namespace Q04
     public enum eMOLETYPE { TYPE_B, TYPE_C };
     public class MngGame : MonoBehaviour
     {
+        public GameObject molePrefab, parent;
+        public Mole[] ms;
 
-        public Mole[] moles;
         public Sprite[] animationB, animationC;
 
         void Awake()
@@ -18,45 +19,60 @@ namespace Q04
         }
         void Init()
         {
-            foreach (var m in moles)
+            int[] x = { -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6 };
+            int[] y = { 4, 3, 2, 1, 0, -1, -2, -3};
+            ms = new Mole[x.Length * y.Length];
+            print("ms Length=" + ms.Length); // 116
+
+            for (int i = 0; i < y.Length; i++)
             {
-                m.Init();
+                for (int j = 0; j < x.Length; j++)
+                {
+                    GameObject obj = Instantiate(molePrefab, parent.transform);
+                    obj.transform.position = new Vector2(x[j], y[i]);
+                    Mole mole = obj.GetComponent<Mole>();
+                    ms[i * x.Length + j] = mole;
+                    mole.Init();
+                }
+                
             }
         }
         int count = 0;
         int max = 1;
-        int limit = 16;
 
+        // mole sendmessage -> count()
         void Count()
         {
+            int limit = ms.Length; //28
             count++;
             //print($"Count - {count}");
-            if (count==max)
+            if (count == max)
             {
                 //print($"Count Max - {max}");
-                
-                print($"B: {max}, C: {max}");
-                while(count>0)
+                while (count > 0)
                 {
-                    count=(max<limit)?count-1:count-2;
+                    count = (max < limit) ? count - 1 : count - 2;
                     MakeMole();
                 }
-                if(max < limit)
-                    max *= 2;
-
+                print($"B: {Global.B}, C: {Global.C}");
+                if (max < limit)
+                {
+                    max = (max*2>limit)? limit : max*2;
+                }
             }
-                
         }
-
+        
         void MakeMole()
         {
             // play mole b
             Mole moleB = getRandMole();
+            if(moleB!=null)
             StartCoroutine(moleB.PlayAnimation(eMOLETYPE.TYPE_B, animationB));
 
             // play mole c
             Mole moleC = getRandMole();
-            StartCoroutine(moleC.PlayAnimation(eMOLETYPE.TYPE_C, animationC));
+            if (moleC != null)
+                StartCoroutine(moleC.PlayAnimation(eMOLETYPE.TYPE_C, animationC));
 
         }
 
@@ -64,20 +80,26 @@ namespace Q04
         {
             List<int> emptyMole = new List<int>();
             string empty = "";
-            for (int i = 0; i < moles.Length; i++)
+            for (int i = 0; i < ms.Length; i++)
             {
-                if (moles[i].gameObject.activeSelf == false)
+                if (ms[i].gameObject.activeSelf == false)
                 {
                     empty += i + " ";
                     emptyMole.Add(i);
                 }
             }
+            //print(empty+ "\n->"+emptyMole[ri]);
 
             int ri = 0;
-            if (emptyMole.Count > 0)
-                ri = Random.Range(0, emptyMole.Count);
-            //print(empty+ "\n->"+emptyMole[ri]);
-            Mole m = moles[emptyMole[ri]];
+            ri = Random.Range(0, emptyMole.Count);
+            
+            if (emptyMole.Count == ri)
+            {
+                //print("none");
+                return null;
+            }
+                
+            Mole m = ms[emptyMole[ri]];
             m.gameObject.SetActive(true);
 
             return m;
