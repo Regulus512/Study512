@@ -1,26 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Mole : MonoBehaviour
+namespace Q04
 {
-    public SpriteRenderer render;
-    public void Init()
+    public class Mole : MonoBehaviour
     {
-        render = GetComponent<SpriteRenderer>();
-    }
+        public SpriteRenderer render;
 
-    public IEnumerator PlayAnimation(Sprite[] clip)
-    {
-        gameObject.SetActive(true);
-        print($"{name} PlayAnimation({clip[0].name})");
-
-        for (int i=0; i<clip.Length; i++)
+        //eMOLETYPE moleType;
+        public void Init()
         {
-            render.sprite = clip[i];
-            yield return null;
+            render = GetComponent<SpriteRenderer>();
         }
-        gameObject.SetActive(false);
-        GameObject.Find("MngGame").SendMessage("MakeMole", SendMessageOptions.RequireReceiver);
+
+        public IEnumerator PlayAnimation(eMOLETYPE type, Sprite[] clip)
+        {
+            if (type == eMOLETYPE.TYPE_B) Global.B++;
+            else Global.C++;
+            //gameObject.SetActive(true);
+            //print($"{name} PlayAnimation({clip[0].name})");
+
+            for (int i = 0; i < clip.Length; i++)
+            {
+                render.sprite = clip[i];
+                yield return null;
+            }
+            gameObject.SetActive(false);
+            if (type == eMOLETYPE.TYPE_B) Global.B--;
+            else Global.C--;
+            GameObject.Find("MngGame").SendMessage("Count", SendMessageOptions.RequireReceiver);
+        }
+
+        public void Die()
+        {
+            //
+
+            gameObject.SetActive(false);
+        }
     }
+
 }
